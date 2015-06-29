@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>1D29E113-4133-4AF6-BAB2-46F8E8879691</string>
+	<key>IDESourceControlProjectName</key>
+	<string>project</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>5BEE21141CF4BE363E16A21BBB0DEF7DFFEAC9D4</key>
+		<string>https://github.com/fahlout/gb-coding-challenge-nf.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>gb-coding-challenge-nf/gb-coding-challenge-nf.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>5BEE21141CF4BE363E16A21BBB0DEF7DFFEAC9D4</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/fahlout/gb-coding-challenge-nf.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>5BEE21141CF4BE363E16A21BBB0DEF7DFFEAC9D4</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>5BEE21141CF4BE363E16A21BBB0DEF7DFFEAC9D4</string>
+			<key>IDESourceControlWCCName</key>
+			<string>gb-coding-challenge</string>
+		</dict>
+	</array>
+</dict>
+</plist>
