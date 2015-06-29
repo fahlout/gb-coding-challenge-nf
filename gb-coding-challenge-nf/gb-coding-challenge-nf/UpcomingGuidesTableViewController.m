@@ -26,6 +26,7 @@
     
     [[GuideWebservice sharedInstance] getUpcomingGuidesWithCompletion:^(WebOperation *operation, NSArray *upcomingGuides) {
         
+        NSLog(@"");
     }];
 }
 

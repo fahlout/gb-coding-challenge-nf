@@ -7,6 +7,8 @@
 //
 
 #import "GuideWebservice.h"
+#import "NSObject+ObjectMap.h"
+#import "UpcomingGuides.h"
 
 @implementation GuideWebservice
 
@@ -49,6 +51,18 @@
             // Get raw JSON package and print to console
             NSString *responseString = [[NSString alloc] initWithData:weakOperation.responseData encoding:NSUTF8StringEncoding];
             NSLog(@"Response JSON: %@", responseString);
+            
+            // Parse response data
+            UpcomingGuides *upcomingGuides = [[UpcomingGuides alloc] initWithJSONData:weakOperation.responseData];
+            
+            if (upcomingGuides) {
+                if ([upcomingGuides isKindOfClass:[UpcomingGuides class]]) {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        completion(weakOperation, upcomingGuides.data);
+                    });
+                    return;
+                }
+            }
         }
         
         dispatch_async(dispatch_get_main_queue(), ^{
