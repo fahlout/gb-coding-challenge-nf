@@ -85,19 +85,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		9EE23B7D1B4202B600BAC2DF /* DTOs */ = {
-			isa = PBXGroup;
-			children = (
-				9EE57BF31B4207B600157959 /* UpcomingGuides.h */,
-				9EE57BF41B4207B600157959 /* UpcomingGuides.m */,
-				9EE57BF01B42079E00157959 /* Guide.h */,
-				9EE57BF11B42079E00157959 /* Guide.m */,
-				9EE57BFA1B42091000157959 /* Venue.h */,
-				9EE57BFB1B42091000157959 /* Venue.m */,
-			);
-			name = DTOs;
-			sourceTree = "<group>";
-		};
 		9EE57BF61B4207C800157959 /* NSObject-ObjectMap */ = {
 			isa = PBXGroup;
 			children = (
@@ -114,6 +101,43 @@
 				9EE57BFF1B420D6A00157959 /* GuideTableViewCell.m */,
 			);
 			name = "Table View Cells";
+			sourceTree = "<group>";
+		};
+		9EE57C011B421D0D00157959 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				9EE57C021B421D2E00157959 /* Upcoming Guides */,
+				9EE57C031B421D3600157959 /* Guide */,
+				9EE57C041B421D4000157959 /* Venue */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		9EE57C021B421D2E00157959 /* Upcoming Guides */ = {
+			isa = PBXGroup;
+			children = (
+				9EE57BF31B4207B600157959 /* UpcomingGuides.h */,
+				9EE57BF41B4207B600157959 /* UpcomingGuides.m */,
+			);
+			name = "Upcoming Guides";
+			sourceTree = "<group>";
+		};
+		9EE57C031B421D3600157959 /* Guide */ = {
+			isa = PBXGroup;
+			children = (
+				9EE57BF01B42079E00157959 /* Guide.h */,
+				9EE57BF11B42079E00157959 /* Guide.m */,
+			);
+			name = Guide;
+			sourceTree = "<group>";
+		};
+		9EE57C041B421D4000157959 /* Venue */ = {
+			isa = PBXGroup;
+			children = (
+				9EE57BFA1B42091000157959 /* Venue.h */,
+				9EE57BFB1B42091000157959 /* Venue.m */,
+			);
+			name = Venue;
 			sourceTree = "<group>";
 		};
 		9EE996351B41FF7500A4A5A0 = {
@@ -142,6 +166,7 @@
 				9EE9966C1B42020E00A4A5A0 /* Libraries */,
 				9EE9966B1B42009A00A4A5A0 /* Webservice */,
 				9EE9966A1B41FF9200A4A5A0 /* Interface */,
+				9EE57C011B421D0D00157959 /* Models */,
 				9EE996691B41FF8D00A4A5A0 /* Views */,
 				9EE996671B41FF8000A4A5A0 /* Controllers */,
 				9EE9964E1B41FF7500A4A5A0 /* Images.xcassets */,
@@ -207,7 +232,6 @@
 			children = (
 				9EE996711B42027A00A4A5A0 /* GuideWebservice.h */,
 				9EE996721B42027A00A4A5A0 /* GuideWebservice.m */,
-				9EE23B7D1B4202B600BAC2DF /* DTOs */,
 			);
 			name = Webservice;
 			sourceTree = "<group>";
