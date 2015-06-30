@@ -51,11 +51,22 @@
 {
     // Retrieve upcoming guides and sort by start date before displaying in table view
     [[GuideWebservice sharedInstance] getUpcomingGuidesWithCompletion:^(WebOperation *operation, NSArray *upcomingGuides) {
-        guides = upcomingGuides;
-        
-        [self sortGuidesByStartDate];
-        
-        [self.tableView reloadData];
+        if (upcomingGuides) {
+            // Successful fetch
+            guides = upcomingGuides;
+            
+            [self sortGuidesByStartDate];
+            
+            [self.tableView reloadData];
+        } else {
+            // Error occured
+            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Oops :-(" message:@"Could not load upcoming guides. Please try again." preferredStyle:UIAlertControllerStyleAlert];
+            
+            UIAlertAction *dismissAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {}];
+            [alertController addAction:dismissAction];
+            
+            [self presentViewController:alertController animated:YES completion:nil];
+        }
         
         [self.refreshControl endRefreshing];
     }];

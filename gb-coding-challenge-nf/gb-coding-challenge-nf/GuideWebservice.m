@@ -51,7 +51,7 @@
     // Make request
     [operation setRequestWithBodyData:nil forHttpMethod:HTTP_METHOD_GET url:requestURL contentType:CONTENT_TYPE_JSON completion:^{
         // Handle response
-        if (weakOperation.responseData) {
+        if (weakOperation.responseData && weakOperation.ResponseStatusCode == 200) {
             // Get raw JSON package and print to console
             NSString *responseString = [[NSString alloc] initWithData:weakOperation.responseData encoding:NSUTF8StringEncoding];
             NSLog(@"Response JSON: %@", responseString);
@@ -75,6 +75,8 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             // Hide loading activity indicator in status bar
             [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+            
+            NSLog(@"An error occured while fetching data.");
             
             completion(nil, nil);
         });
