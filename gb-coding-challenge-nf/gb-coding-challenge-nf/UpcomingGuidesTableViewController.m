@@ -8,8 +8,13 @@
 
 #import "UpcomingGuidesTableViewController.h"
 #import "GuideWebservice.h"
+#import "Guide.h"
+#import "GuideTableViewCell.h"
 
 @interface UpcomingGuidesTableViewController ()
+{
+    NSArray *guides;
+}
 
 @end
 
@@ -18,16 +23,21 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    self.refreshControl.backgroundColor = [UIColor whiteColor];
+    [self.refreshControl addTarget:self
+                            action:@selector(getUpcomingGuides)
+                  forControlEvents:UIControlEventValueChanged];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
     
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    
-    [[GuideWebservice sharedInstance] getUpcomingGuidesWithCompletion:^(WebOperation *operation, NSArray *upcomingGuides) {
-        
-        NSLog(@"");
-    }];
+    // Handle first time loading guides when view controller appears
+    [self getUpcomingGuides];
+    [self.refreshControl beginRefreshing];
+    [self.tableView setContentOffset:CGPointMake(0.0f, -60.0f) animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -35,72 +45,69 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - Webservice calls
+
+- (void)getUpcomingGuides
+{
+    // Retrieve upcoming guides and sort by start date before displaying in table view
+    [[GuideWebservice sharedInstance] getUpcomingGuidesWithCompletion:^(WebOperation *operation, NSArray *upcomingGuides) {
+        guides = upcomingGuides;
+        
+        [self sortGuidesByStartDate];
+        
+        [self.tableView reloadData];
+        
+        [self.refreshControl endRefreshing];
+    }];
+}
+
+#pragma mark - Sort guides by start date
+
+- (void)sortGuidesByStartDate
+{
+    guides = [guides sortedArrayUsingComparator:^NSComparisonResult(id a, id b) {
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"MMM dd, yyyy"];
+        
+        NSDate *first = [dateFormatter dateFromString:[(Guide*)a startDate]];
+        NSDate *second = [dateFormatter dateFromString:[(Guide*)b startDate]];
+        return [first compare:second];
+    }];
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+    return [guides count];
 }
 
-/*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    GuideTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"GuideTableViewCell" forIndexPath:indexPath];
     
     // Configure the cell...
+    Guide *guide = [guides objectAtIndex:indexPath.row];
+    
+    cell.guideNameLabel.text = guide.name;
+    
+    if (guide.startDate != nil && guide.endDate != nil) {
+        cell.guideTimeframeLabel.text = [NSString stringWithFormat:@"%@ - %@", guide.startDate, guide.endDate];
+    } else {
+        cell.guideTimeframeLabel.text = @"No event time available";
+    }
+    
+    if (guide.venue.city != nil && guide.venue.state != nil) {
+        cell.guideLocationLabel.text = [NSString stringWithFormat:@"%@, %@", guide.venue.city, guide.venue.state];
+    } else {
+        cell.guideLocationLabel.text = @"No event location available";
+    }
     
     return cell;
 }
-*/
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

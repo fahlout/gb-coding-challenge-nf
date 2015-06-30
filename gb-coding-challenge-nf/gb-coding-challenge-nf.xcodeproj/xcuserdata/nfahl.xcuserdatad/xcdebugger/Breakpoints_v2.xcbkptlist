@@ -10,28 +10,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "gb-coding-challenge-nf/UpcomingGuidesTableViewController.m"
-            timestampString = "457313151.796984"
+            timestampString = "457317230.574562"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "28"
-            endingLineNumber = "28"
-            landmarkName = "-viewDidLoad"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "gb-coding-challenge-nf/UpcomingGuidesTableViewController.m"
-            timestampString = "457313148.364866"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "29"
-            endingLineNumber = "29"
-            landmarkName = "-viewDidLoad"
+            startingLineNumber = "74"
+            endingLineNumber = "74"
+            landmarkName = "-sortGuidesByStartDate"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

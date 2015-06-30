@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="15A178w" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="CtZ-Bm-nPs">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -25,23 +26,76 @@
             </objects>
             <point key="canvasLocation" x="-884" y="214"/>
         </scene>
-        <!--Upcoming-->
+        <!--Upcoming Guides-->
         <scene sceneID="UP6-xD-5Eb">
             <objects>
                 <tableViewController id="lCa-fH-VNh" customClass="UpcomingGuidesTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="dGT-S0-82S">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="79" sectionHeaderHeight="22" sectionFooterHeight="22" id="dGT-S0-82S">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="nJQ-kc-go2">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="GuideTableViewCell" rowHeight="79" id="nJQ-kc-go2" customClass="GuideTableViewCell">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nJQ-kc-go2" id="1hV-91-yes">
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GUIDE_NAME_LABEL" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="857-ZX-Iwc">
+                                            <rect key="frame" x="8" y="8" width="584" height="22"/>
+                                            <animations/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="22" id="odi-Be-fT9"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GUIDE_TIMEFRAME_LABEL" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9qw-gi-qfA">
+                                            <rect key="frame" x="8" y="35" width="584" height="16"/>
+                                            <animations/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="16" id="zQT-L4-mcm"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GUIDE_LOCATION_LABEL" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ftf-4e-4eR">
+                                            <rect key="frame" x="8" y="52" width="584" height="16"/>
+                                            <animations/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="16" id="ZE4-VN-erY"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                     <animations/>
+                                    <constraints>
+                                        <constraint firstItem="857-ZX-Iwc" firstAttribute="trailing" secondItem="1hV-91-yes" secondAttribute="trailingMargin" id="2x0-sG-VIX"/>
+                                        <constraint firstItem="Ftf-4e-4eR" firstAttribute="leading" secondItem="1hV-91-yes" secondAttribute="leadingMargin" id="3MQ-QX-hee"/>
+                                        <constraint firstItem="Ftf-4e-4eR" firstAttribute="trailing" secondItem="1hV-91-yes" secondAttribute="trailingMargin" id="I1T-2N-YTR"/>
+                                        <constraint firstItem="Ftf-4e-4eR" firstAttribute="trailing" secondItem="1hV-91-yes" secondAttribute="trailingMargin" id="R89-bz-r3M"/>
+                                        <constraint firstItem="857-ZX-Iwc" firstAttribute="leading" secondItem="1hV-91-yes" secondAttribute="leadingMargin" id="UOp-do-eOp"/>
+                                        <constraint firstItem="9qw-gi-qfA" firstAttribute="leading" secondItem="1hV-91-yes" secondAttribute="leadingMargin" id="YY2-rG-nRO"/>
+                                        <constraint firstItem="857-ZX-Iwc" firstAttribute="top" secondItem="1hV-91-yes" secondAttribute="topMargin" id="bdj-gI-gra"/>
+                                        <constraint firstItem="9qw-gi-qfA" firstAttribute="trailing" secondItem="1hV-91-yes" secondAttribute="trailingMargin" id="hGG-pd-eOj"/>
+                                        <constraint firstItem="9qw-gi-qfA" firstAttribute="top" secondItem="857-ZX-Iwc" secondAttribute="bottom" constant="5" id="lIx-eH-O2Y"/>
+                                        <constraint firstItem="Ftf-4e-4eR" firstAttribute="top" secondItem="9qw-gi-qfA" secondAttribute="bottom" constant="1" id="v5c-ph-0G7"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="guideLocationLabel" destination="Ftf-4e-4eR" id="c4r-Fw-g6O"/>
+                                    <outlet property="guideNameLabel" destination="857-ZX-Iwc" id="AU4-b4-w21"/>
+                                    <outlet property="guideTimeframeLabel" destination="9qw-gi-qfA" id="XES-hk-f0t"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -49,7 +103,7 @@
                             <outlet property="delegate" destination="lCa-fH-VNh" id="5UN-Df-w0X"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Upcoming" id="dHs-Yf-YMb"/>
+                    <navigationItem key="navigationItem" title="Upcoming Guides" id="dHs-Yf-YMb"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9wZ-sE-32z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

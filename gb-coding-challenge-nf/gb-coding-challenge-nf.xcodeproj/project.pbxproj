@@ -12,6 +12,7 @@
 		9EE57BF51B4207B600157959 /* UpcomingGuides.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EE57BF41B4207B600157959 /* UpcomingGuides.m */; };
 		9EE57BF91B4207FD00157959 /* NSObject+ObjectMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EE57BF81B4207FD00157959 /* NSObject+ObjectMap.m */; };
 		9EE57BFC1B42091000157959 /* Venue.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EE57BFB1B42091000157959 /* Venue.m */; };
+		9EE57C001B420D6A00157959 /* GuideTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EE57BFF1B420D6A00157959 /* GuideTableViewCell.m */; };
 		9EE996441B41FF7500A4A5A0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EE996431B41FF7500A4A5A0 /* main.m */; };
 		9EE996471B41FF7500A4A5A0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EE996461B41FF7500A4A5A0 /* AppDelegate.m */; };
 		9EE9964D1B41FF7500A4A5A0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9EE9964B1B41FF7500A4A5A0 /* Main.storyboard */; };
@@ -44,6 +45,8 @@
 		9EE57BF81B4207FD00157959 /* NSObject+ObjectMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+ObjectMap.m"; sourceTree = "<group>"; };
 		9EE57BFA1B42091000157959 /* Venue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Venue.h; sourceTree = "<group>"; };
 		9EE57BFB1B42091000157959 /* Venue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Venue.m; sourceTree = "<group>"; };
+		9EE57BFE1B420D6A00157959 /* GuideTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuideTableViewCell.h; sourceTree = "<group>"; };
+		9EE57BFF1B420D6A00157959 /* GuideTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuideTableViewCell.m; sourceTree = "<group>"; };
 		9EE9963E1B41FF7500A4A5A0 /* gb-coding-challenge-nf.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "gb-coding-challenge-nf.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9EE996421B41FF7500A4A5A0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9EE996431B41FF7500A4A5A0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -102,6 +105,15 @@
 				9EE57BF81B4207FD00157959 /* NSObject+ObjectMap.m */,
 			);
 			name = "NSObject-ObjectMap";
+			sourceTree = "<group>";
+		};
+		9EE57BFD1B420D4F00157959 /* Table View Cells */ = {
+			isa = PBXGroup;
+			children = (
+				9EE57BFE1B420D6A00157959 /* GuideTableViewCell.h */,
+				9EE57BFF1B420D6A00157959 /* GuideTableViewCell.m */,
+			);
+			name = "Table View Cells";
 			sourceTree = "<group>";
 		};
 		9EE996351B41FF7500A4A5A0 = {
@@ -177,6 +189,7 @@
 		9EE996691B41FF8D00A4A5A0 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				9EE57BFD1B420D4F00157959 /* Table View Cells */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -327,6 +340,7 @@
 				9EE57BF21B42079E00157959 /* Guide.m in Sources */,
 				9EE996731B42027A00A4A5A0 /* GuideWebservice.m in Sources */,
 				9EE996441B41FF7500A4A5A0 /* main.m in Sources */,
+				9EE57C001B420D6A00157959 /* GuideTableViewCell.m in Sources */,
 				9EE57BF51B4207B600157959 /* UpcomingGuides.m in Sources */,
 				9EE9967A1B42029600A4A5A0 /* Webservice.m in Sources */,
 				9EE57BF91B4207FD00157959 /* NSObject+ObjectMap.m in Sources */,

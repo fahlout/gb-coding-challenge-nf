@@ -6,6 +6,7 @@
 //
 //
 
+#import <UIKit/UIKit.h>
 #import "GuideWebservice.h"
 #import "NSObject+ObjectMap.h"
 #import "UpcomingGuides.h"
@@ -37,6 +38,9 @@
 #pragma mark - API methods
 - (void)getUpcomingGuidesWithCompletion:(UpcomingGuidesCompletionBlock)completion
 {
+    // Show loading activity indicator in status bar
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+    
     // Build request URL
     NSString *requestURL = @"https://www.guidebook.com/service/v2/upcomingGuides/";
     
@@ -58,6 +62,9 @@
             if (upcomingGuides) {
                 if ([upcomingGuides isKindOfClass:[UpcomingGuides class]]) {
                     dispatch_async(dispatch_get_main_queue(), ^{
+                        // Hide loading activity indicator in status bar
+                        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+                        
                         completion(weakOperation, upcomingGuides.data);
                     });
                     return;
@@ -66,6 +73,9 @@
         }
         
         dispatch_async(dispatch_get_main_queue(), ^{
+            // Hide loading activity indicator in status bar
+            [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+            
             completion(nil, nil);
         });
     }];
