@@ -14,6 +14,7 @@
 @interface UpcomingGuidesTableViewController ()
 {
     NSArray *guides;
+    NSMutableArray *groupedGuides;
 }
 
 @end
@@ -56,6 +57,7 @@
             guides = upcomingGuides;
             
             [self sortGuidesByStartDate];
+            [self groupGuidesByStartDate];
             
             [self.tableView reloadData];
         } else {
@@ -72,7 +74,7 @@
     }];
 }
 
-#pragma mark - Sort guides by start date
+#pragma mark - Sort guides
 
 - (void)sortGuidesByStartDate
 {
@@ -86,28 +88,65 @@
     }];
 }
 
+#pragma mark - Group guides
+
+- (void)groupGuidesByStartDate
+{
+    Guide *lastGuide = nil;
+    NSMutableArray *currentGroup = [[NSMutableArray alloc] init];
+    
+    groupedGuides = [[NSMutableArray alloc] init];
+    
+    for (Guide *guide in guides) {
+        if (![guide.startDate isEqualToString:lastGuide.startDate] && lastGuide != nil) {
+            [groupedGuides addObject:currentGroup];
+            currentGroup = [[NSMutableArray alloc] init];
+        }
+        
+        [currentGroup addObject:guide];
+        lastGuide = guide;
+    }
+    
+    // Add the last group once loop is over
+    [groupedGuides addObject:currentGroup];
+    currentGroup = nil;
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
-    return 1;
+    return [groupedGuides count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    return [guides count];
+    return [[groupedGuides objectAtIndex:section] count];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 35.0;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
+    if ([[groupedGuides objectAtIndex:section] count] > 0) {
+        return [[[groupedGuides objectAtIndex:section] objectAtIndex:0] startDate];
+    } else {
+        return @"Start Date Not Found";
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     GuideTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"GuideTableViewCell" forIndexPath:indexPath];
     
     // Configure the cell...
-    Guide *guide = [guides objectAtIndex:indexPath.row];
+    Guide *guide = [[groupedGuides objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
     
     cell.guideNameLabel.text = guide.name;
     
     if (guide.startDate != nil && guide.endDate != nil) {
-        cell.guideTimeframeLabel.text = [NSString stringWithFormat:@"%@ - %@", guide.startDate, guide.endDate];
+        cell.guideTimeframeLabel.text = [NSString stringWithFormat:@"Ends - %@", guide.endDate];
     } else {
         cell.guideTimeframeLabel.text = @"No event time available";
     }
